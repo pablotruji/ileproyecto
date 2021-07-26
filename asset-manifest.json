@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/ileproyecto/static/css/main.a617e044.chunk.css",
-    "main.js": "/ileproyecto/static/js/main.f06495a1.chunk.js",
-    "main.js.map": "/ileproyecto/static/js/main.f06495a1.chunk.js.map",
-    "runtime-main.js": "/ileproyecto/static/js/runtime-main.9ee8ed10.js",
-    "runtime-main.js.map": "/ileproyecto/static/js/runtime-main.9ee8ed10.js.map",
-    "static/js/2.9cc60e93.chunk.js": "/ileproyecto/static/js/2.9cc60e93.chunk.js",
-    "static/js/2.9cc60e93.chunk.js.map": "/ileproyecto/static/js/2.9cc60e93.chunk.js.map",
-    "static/js/3.2dc5c9e1.chunk.js": "/ileproyecto/static/js/3.2dc5c9e1.chunk.js",
-    "static/js/3.2dc5c9e1.chunk.js.map": "/ileproyecto/static/js/3.2dc5c9e1.chunk.js.map",
+    "main.css": "/ileproyecto/static/css/main.d27dee77.chunk.css",
+    "main.js": "/ileproyecto/static/js/main.84d3873d.chunk.js",
+    "main.js.map": "/ileproyecto/static/js/main.84d3873d.chunk.js.map",
+    "runtime-main.js": "/ileproyecto/static/js/runtime-main.7020fc0c.js",
+    "runtime-main.js.map": "/ileproyecto/static/js/runtime-main.7020fc0c.js.map",
+    "static/js/2.dabbad8c.chunk.js": "/ileproyecto/static/js/2.dabbad8c.chunk.js",
+    "static/js/2.dabbad8c.chunk.js.map": "/ileproyecto/static/js/2.dabbad8c.chunk.js.map",
     "index.html": "/ileproyecto/index.html",
-    "static/css/main.a617e044.chunk.css.map": "/ileproyecto/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.9cc60e93.chunk.js.LICENSE.txt": "/ileproyecto/static/js/2.9cc60e93.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/ileproyecto/static/media/logo.6ce24c58.svg"
+    "static/css/main.d27dee77.chunk.css.map": "/ileproyecto/static/css/main.d27dee77.chunk.css.map",
+    "static/js/2.dabbad8c.chunk.js.LICENSE.txt": "/ileproyecto/static/js/2.dabbad8c.chunk.js.LICENSE.txt",
+    "static/media/1.f0a63808.jpg": "/ileproyecto/static/media/1.f0a63808.jpg",
+    "static/media/2.5563af19.jpg": "/ileproyecto/static/media/2.5563af19.jpg",
+    "static/media/3.04721616.jpg": "/ileproyecto/static/media/3.04721616.jpg",
+    "static/media/4.6ea8be54.jpg": "/ileproyecto/static/media/4.6ea8be54.jpg",
+    "static/media/iconmonstr-angel-left-thin.b74b51c4.svg": "/ileproyecto/static/media/iconmonstr-angel-left-thin.b74b51c4.svg",
+    "static/media/iconmonstr-angel-right-thin.b282d2fc.svg": "/ileproyecto/static/media/iconmonstr-angel-right-thin.b282d2fc.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9ee8ed10.js",
-    "static/js/2.9cc60e93.chunk.js",
-    "static/css/main.a617e044.chunk.css",
-    "static/js/main.f06495a1.chunk.js"
+    "static/js/runtime-main.7020fc0c.js",
+    "static/js/2.dabbad8c.chunk.js",
+    "static/css/main.d27dee77.chunk.css",
+    "static/js/main.84d3873d.chunk.js"
   ]
 }
