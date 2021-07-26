@@ -1,4 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import Slideshow from './components/SlideShow';
+import styled from 'styled-components';
+
+//Estilos de Slideshow
+import './styles.css'
+
+const App = () => {
+  return (
+    <main>
+      <Titulo>Productos Destacados</Titulo>
+      <Slideshow/>
+
+    </main>
+  )
+}
+
+const Titulo = styled.p`
+  font-size: 18px;
+  fontweight: 700;
+  text-transform: uppercase;
+  margin-botton: 10px;
+`;
+
+export default App;
+
+
+/*import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -22,4 +49,6 @@ function App() {
   );
 }
 
-export default App;
+export default App; borrado por el slide */
+
+
