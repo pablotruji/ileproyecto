@@ -1,16 +1,17 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useCallback} from 'react';
 
 import {ReactComponent as FlechaIzquierda} from './../img/iconmonstr-angel-left-thin.svg';
 import {ReactComponent as FlechaDerecha} from './../img/iconmonstr-angel-right-thin.svg';
 import styled from 'styled-components';
 
 const Slideshow = ({children, controles= true, autoplay= true, velocidad="500", intervalo="5000"}) =>{
-
+    
     const slideshow = useRef(null);
     const intervaloSlideshow = useRef(null);
 
-    const siguiente = () => {
-        //Comprobamos que el slideshow tenga elementos  
+    const siguiente = useCallback(() =>{
+            //Comprobamos que el slideshow tenga elementos  
+
         if(slideshow.current.children.length > 0){
             //Obtenemos el primer elemento del slideshow
             const primerElemento = slideshow.current.children[0];
@@ -39,7 +40,7 @@ const Slideshow = ({children, controles= true, autoplay= true, velocidad="500", 
             slideshow.current.addEventListener('transitionend', transicion);
 
         }
-    }
+    }, [velocidad]);
     
     const anterior = () => {
         if(slideshow.current.children.length > 0){
@@ -54,7 +55,7 @@ const Slideshow = ({children, controles= true, autoplay= true, velocidad="500", 
             slideshow.current.style.transform = `translateX(-${tamanhoSlide}px)`;
 
             setTimeout(() => {
-                slideshow.current.style.transition = '{velocidad}ms ease-out all';
+                slideshow.current.style.transition = `${velocidad}ms ease-out all`;
                 slideshow.current.style.transform = `translateX(0)`;
             }, 60);
 
@@ -62,24 +63,26 @@ const Slideshow = ({children, controles= true, autoplay= true, velocidad="500", 
     }
 
     useEffect(() =>{
+        
         if(autoplay){
             intervaloSlideshow.current = setInterval(() =>{
                 siguiente();
-            }, 5000);
-
+            }, intervalo);
+            
             // Eliminamos los intervalos
             slideshow.current.addEventListener('mouseenter', () =>{
                 clearInterval(intervaloSlideshow.current);
+                
             });
-
-            //Volver a poner en marcha el intervalo cuando el mause esté fuera del slide
+            
+            //Volver a poner en 0 el intervalo cuando el mouse esté fuera del slide
             slideshow.current.addEventListener('mouseleave', () =>{
                 intervaloSlideshow.current = setInterval(() =>{
                     siguiente();
-                }, 5000);
+                }, intervalo);
             });
         }
-    }, []);
+    }, [autoplay, intervalo, siguiente]);
     
     
     return(

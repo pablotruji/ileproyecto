@@ -14,7 +14,7 @@ const App = () => {
   return (
     <main>
       <Titulo>Productos Destacados</Titulo>
-      <Slideshow controles={true} autoplay={true} velocidad="500" intervalo="3000">
+      <Slideshow controles={true} autoplay={true} velocidad="800" intervalo="3000">
         <Slide>
             <a href="/">
                 <img src={ img1 } alt=""/>
@@ -50,7 +50,7 @@ const App = () => {
       </Slideshow>
 
       <Titulo>Otro Productos</Titulo>
-      <Slideshow controles={true} autoplay={true} velocidad="500" intervalo="10000">
+      <Slideshow controles={true} autoplay={true} velocidad="800" intervalo="3000">
         <Slide>
             <a href="/">
                 <img src={ img1 } alt=""/>
