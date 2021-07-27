@@ -1,15 +1,13 @@
-import React, {useRef} from 'react';
-import img1 from './../img/1.jpg';
-import img2 from './../img/2.jpg';
-import img3 from './../img/3.jpg';
-import img4 from './../img/4.jpg';
+import React, {useRef, useEffect} from 'react';
+
 import {ReactComponent as FlechaIzquierda} from './../img/iconmonstr-angel-left-thin.svg';
 import {ReactComponent as FlechaDerecha} from './../img/iconmonstr-angel-right-thin.svg';
 import styled from 'styled-components';
 
-const Slideshow = () =>{
+const Slideshow = ({children, controles= true, autoplay= true, velocidad="500", intervalo="5000"}) =>{
 
     const slideshow = useRef(null);
+    const intervaloSlideshow = useRef(null);
 
     const siguiente = () => {
         //Comprobamos que el slideshow tenga elementos  
@@ -18,7 +16,7 @@ const Slideshow = () =>{
             const primerElemento = slideshow.current.children[0];
 
             //EStablecemos la transición del slideshow
-            slideshow.current.style.transition =`600ms ease-out all`;
+            slideshow.current.style.transition =`${velocidad}ms ease-out all`;
 
             //Sacamos el tamaño del slide
             const tamanhoSlide = slideshow.current.children[0].offsetWidth;
@@ -33,6 +31,8 @@ const Slideshow = () =>{
 
                 //Tomamos el primer elemento y lo mandamos al final.
                 slideshow.current.appendChild(primerElemento);
+
+                slideshow.current.removeEventListener('transitionend', transicion)
             }
 
             // Evenlistener para cuando termina la animación 
@@ -42,53 +42,59 @@ const Slideshow = () =>{
     }
     
     const anterior = () => {
-        console.log('Anterior');
+        if(slideshow.current.children.length > 0){
+            //Obtenemos el último elemento del slideshow
+            const index = slideshow.current.children.length - 1
+            const ultimoElemento = slideshow.current.children[index];
+            slideshow.current.insertBefore(ultimoElemento, slideshow.current.firstChild);
+
+            slideshow.current.style.transition = 'none';
+
+            const tamanhoSlide = slideshow.current.children[0].offsetWidth;
+            slideshow.current.style.transform = `translateX(-${tamanhoSlide}px)`;
+
+            setTimeout(() => {
+                slideshow.current.style.transition = '{velocidad}ms ease-out all';
+                slideshow.current.style.transform = `translateX(0)`;
+            }, 60);
+
+        }
     }
+
+    useEffect(() =>{
+        if(autoplay){
+            intervaloSlideshow.current = setInterval(() =>{
+                siguiente();
+            }, 5000);
+
+            // Eliminamos los intervalos
+            slideshow.current.addEventListener('mouseenter', () =>{
+                clearInterval(intervaloSlideshow.current);
+            });
+
+            //Volver a poner en marcha el intervalo cuando el mause esté fuera del slide
+            slideshow.current.addEventListener('mouseleave', () =>{
+                intervaloSlideshow.current = setInterval(() =>{
+                    siguiente();
+                }, 5000);
+            });
+        }
+    }, []);
+    
     
     return(
         <ContenedorPrincipal>
             <ContenedorSlideShow ref={slideshow}>
-                <Slide>
-                    <a href="/">
-                        <img src={ img1 } alt=""/>
-                        <TextoSlide colorFondo="#ff8000" colorTexto="#000">
-                            <p>15% descuento en productos Apple</p>
-                        </TextoSlide>
-                    </a>
-                </Slide>
-                <Slide>
-                    <a href="/">
-                        <img src={ img2 } alt=""/>
-                        <TextoSlide>
-                            <p>15% descuento en productos Apple</p>
-                        </TextoSlide>
-                    </a>
-                </Slide>
-                <Slide>
-                    <a href="/">
-                        <img src={ img3 } alt=""/>
-                        <TextoSlide>
-                            <p>15% descuento en productos Apple</p>
-                        </TextoSlide>
-                    </a>
-                </Slide>
-                <Slide>
-                    <a href="/">
-                        <img src={ img4 } alt=""/>
-                        <TextoSlide>
-                            <p>15% descuento en productos Apple</p>
-                        </TextoSlide>
-                    </a>
-                </Slide>
+                {children}
             </ContenedorSlideShow>
-            <Controles>
+            {controles && <Controles>
                 <Boton onClick={anterior}>
                     <FlechaIzquierda />
                 </Boton>
                 <Boton derecho onClick={siguiente}>
                     <FlechaDerecha />
                 </Boton>
-            </Controles>
+            </Controles>}
         </ContenedorPrincipal>
     ); 
 }
@@ -166,4 +172,4 @@ const Boton = styled.button `
 
 
 
-export default Slideshow;
+export  {Slideshow, Slide, TextoSlide};
